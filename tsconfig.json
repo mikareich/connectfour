@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "noEmit": true,
+    "target": "esnext",
+    "module": "commonjs",
+    "sourceMap": true,
+    "declaration": true,
+    "strict": true,
+    "resolveJsonModule": true,
+    "outDir": "./lib"
+  },
+  "include": ["src", "playground"]
+}
