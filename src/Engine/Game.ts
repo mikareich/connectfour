@@ -14,8 +14,21 @@ class Game extends EventHandler<"stateChanged" | "newTurn" | "error"> {
   /** Players in game */
   public readonly players: Player[]
 
+  /** Winner of the game */
+  private _winner: Player | undefined
+
+  /** Winner of the game */
+  get winner(): Player | undefined {
+    return this._winner
+  }
+
   /** State of the game */
   private _gameState: "INITIALIZING" | "PLAYING" | "GAME_OVER" = "INITIALIZING"
+
+  /** State of the game */
+  get gameState(): "INITIALIZING" | "PLAYING" | "GAME_OVER" {
+    return this._gameState
+  }
 
   /** Game records */
   private _gameHistory: this[] = []
@@ -71,6 +84,7 @@ class Game extends EventHandler<"stateChanged" | "newTurn" | "error"> {
     this._gameHistory = [...this._gameHistory, this]
 
     if (this.board.isWon()) {
+      this._winner = this.currentPlayer
       this._gameState = "GAME_OVER"
       this.dispatchEvent("stateChanged", this._gameState)
       return

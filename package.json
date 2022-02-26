@@ -1,6 +1,6 @@
 {
-  "name": "connectfour",
-  "version": "1.0.0",
+  "name": "connectfour-ts",
+  "version": "1.0.1",
   "description": "'Connect-four' game engine  ",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
