@@ -43,7 +43,6 @@ class Player extends EventHandler<"turn" | "toGameAdded" | "error"> {
    * @param game Game to execute turn for
    * @returns Col to place symbol
    */
-  // eslint-disable-next-line class-methods-use-this
   public turn(game: Game): number {
     this.dispatchEvent("error", new Error("No turn algorythm provided"))
     throw new Error("No turn function implemented")

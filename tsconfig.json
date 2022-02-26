@@ -1,13 +1,15 @@
 {
   "compilerOptions": {
-    "noEmit": true,
-    "target": "esnext",
-    "module": "commonjs",
-    "sourceMap": true,
     "declaration": true,
-    "strict": true,
-    "resolveJsonModule": true,
-    "outDir": "./lib"
+    "strictNullChecks": true,
+    "target": "es5",
+    "outDir": "lib",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "lib": ["es2015", "dom"],
+    "rootDir": "src"
   },
-  "include": ["src", "playground"]
+  "include": ["src"],
+  "exclude": ["node_modules", "lib"]
 }
