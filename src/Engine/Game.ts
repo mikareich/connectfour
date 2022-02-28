@@ -3,6 +3,8 @@ import EventHandler from "../EventHandler"
 import Player from "../Player"
 import Board from "./Board"
 
+type GameState = "INITIALIZING" | "PLAYING" | "TIE" | "WON"
+
 /** Connect Four instance */
 class Game extends EventHandler<"stateChanged" | "newTurn" | "error"> {
   /** Game configuration */
@@ -23,11 +25,11 @@ class Game extends EventHandler<"stateChanged" | "newTurn" | "error"> {
   }
 
   /** State of the game */
-  private _gameState: "INITIALIZING" | "PLAYING" | "GAME_OVER" = "INITIALIZING"
+  private _state: GameState = "INITIALIZING"
 
   /** State of the game */
-  get gameState(): "INITIALIZING" | "PLAYING" | "GAME_OVER" {
-    return this._gameState
+  get state(): GameState {
+    return this._state
   }
 
   /** Game records */
@@ -53,8 +55,8 @@ class Game extends EventHandler<"stateChanged" | "newTurn" | "error"> {
   /** Starts game */
   public start(): void {
     if (this.players.length === 0) throw new Error("No players provided")
-    this._gameState = "PLAYING"
-    this.dispatchEvent("stateChanged", this._gameState)
+    this._state = "PLAYING"
+    this.dispatchEvent("stateChanged", this._state)
 
     this.newTurn()
   }
@@ -82,16 +84,15 @@ class Game extends EventHandler<"stateChanged" | "newTurn" | "error"> {
 
     // next player turn
     this._gameHistory = [...this._gameHistory, this]
-
     if (this.board.isWon()) {
       this._winner = this.currentPlayer
-      this._gameState = "GAME_OVER"
-      this.dispatchEvent("stateChanged", this._gameState)
+      this._state = "WON"
+      this.dispatchEvent("stateChanged", this._state)
       return
     }
     if (this.board.isFull()) {
-      this._gameState = "GAME_OVER"
-      this.dispatchEvent("stateChanged", this._gameState)
+      this._state = "TIE"
+      this.dispatchEvent("stateChanged", this._state)
       return
     }
 

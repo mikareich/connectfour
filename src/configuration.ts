@@ -29,6 +29,7 @@ export const defaultConfiguration: Configuration = {
 
 export const testConfiguration: Configuration = {
   ...defaultConfiguration,
+  numberOfSymbolsToWin: 3,
   cols: 3,
   rows: 3,
 }

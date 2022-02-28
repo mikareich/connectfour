@@ -2,6 +2,7 @@ import Game from "../Game"
 import Player from "../../Player"
 import Board from "../Board"
 import { defaultConfiguration, testConfiguration } from "../../configuration"
+import isWon from "../utils/isWon"
 
 describe("Game initialisation", () => {
   test("Game configuration applies on board configuration", () => {

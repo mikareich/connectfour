@@ -29,6 +29,7 @@ function isWon(board: Board): WonPosition[] {
 
       if (
         compareSequence.length === Board.CONFIGURATION.numberOfSymbolsToWin &&
+        Board.CONFIGURATION.symbols.includes(compareSequence[0]) &&
         compareSequence.every((symbol) => symbol === compareSequence[0])
       )
         return {

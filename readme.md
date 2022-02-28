@@ -2,7 +2,13 @@
 
 A simple game engine for the game _"Connect four"_. The engine is very flexible and easy to extend, with the aim of programming virutelle players particularly simple.
 
-## Initialization
+## Install
+
+```bash
+npm install connectfour-ts
+```
+
+## Usage
 
 To play _"Connect four"_, players must first be created and added. It is important that the players already have the method `turn` defined. To start the game, you just have to call the start method.
 
